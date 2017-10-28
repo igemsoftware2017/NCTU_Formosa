@@ -1,32 +1,31 @@
 #######################
 This code is from "" with some modification
 
-To use the peptide visualize software,the following software are you needed.
-```
-pymol(website : http://www.pymol.org/)
-python3.6
-```
-And these python package are you needed.
-optparse
-numpy
+To use the peptide visualize software,the following requirements are needed.
+
++`pymol` can ce download in
+`http://www.pymol.org/`
++`python==3.6` with packages :`optparse`,`numpy`
 You can use pip to install these packages
 ```
 pip install optparse
 pip install numpy
 ```
+##Start to use the software
 
-First,you needed to make the propensity score file for the perl script.
-Run the make_PS to make the file
+###First,you needed to make the propensity score file for the perl script.
+
+Run the `make_PS.py` to make the file
 
 ```
-python make_PS -f [scorecard] -t [type:PS or DPS] -n [normalize] -o [outputname]
+python make_PS.py -f [scorecard] -t [type:PS or DPS] -n [normalize] -o [outputname]
 ```
 For example :
 ```
 python make_PS -f example_scorecard -t DPS -n -o DPS.tab
 ```
 
-Second,using the perl to draw the peptide.
+###Second,using the perl to draw the peptide.
 ```
 perl SCM_color_v3.pl
 ```
