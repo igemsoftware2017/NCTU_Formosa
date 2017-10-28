@@ -1,0 +1,204 @@
+#page_header{font-size:13px;clear:both;min-width:800px;}
+
+#page_header a {text-decoration: none;}
+
+/* accesskey navigation */
+#page_header ul.skip_nav {margin: 0;
+                          position: absolute;}
+
+#page_header .skip_nav a {
+position: absolute;
+top: -100px;
+overflow: hidden;
+margin-left: 47em;
+background-color: #CCCCCC;
+}
+
+#page_header .skip_nav a:focus {
+position: absolute;
+white-space: nowrap;
+padding: .5em;
+-webkit-transition: top 0.1s ease-in 0s, background 0.5s linear 0s;
+transition: top 0.1s ease-in 0s, background 0.5s linear 0s;
+top: 0;
+z-index: 100;
+outline: 0;
+background-color: #985735;
+border-radius: 0 0 6px 6px;
+box-shadow: 3px 3px 3px rgba(0,0,0,.3);
+}
+
+/* blue nav bar */
+#page_header .nih a{color: white; background-color: #005295;}
+#page_header .blue_nav_bar {background-color: #336699;}
+#page_header .norm_height {height: 47px;}
+#page_header .ncbi {padding: 1.15em 1em;}
+#page_header .nih img {padding: .7em 1em;}
+#page_header .ncbi_name {padding: 0 .5em 0 1em;
+                         font-weight: bold;}
+#page_header .vertical_divider {color: #EAEAEA;
+                                padding: 0 .5em;}
+#page_header .blue_nav_bar, #page_header .blue_nav_bar a, #page_header .skip_nav a {color: #FFFFFF;}
+#page_header a.header_link {padding: 1.15em 1em;}
+#page_header a.left_padding_loginlink{padding-left:1em}
+
+
+/* category bar */
+#page_header .bg-gray {background-color: #4498d4;}
+#page_header ul.category_bar {padding: .5em 0;}
+#page_header ul.category_bar li a {padding: .4em 1em .5em .75em;
+                                   font-weight: bold;}
+#page_header .category_bar a:hover {color: rgba(255,255,255,.6);}
+#page_header .header-div {padding-bottom: 0.5em;}
+
+
+/* search bar */
+#page_header select {padding: .35em;
+                     width: 12.5%;
+                     background-color: #EAEAEA;
+                     border-radius: 0;
+                     border: 2px solid #FFFFFF;
+                     box-shadow: 1px 1px 2px #FFFFFF;}
+#page_header input {padding: .5em;
+                    margin: 0;}
+
+
+/* 'Search NCBI' placeholder styles - cannot be combined into a single selector */
+#page_header input:focus::-webkit-input-placeholder {transition: opacity 0.5s 0.5s ease; opacity: 0;}
+#page_header input:focus:-moz-placeholder {transition: opacity 0.5s 0.5s ease; opacity: 0;}
+#page_header input:focus::-moz-placeholder {transition: opacity 0.5s 0.5s ease; opacity: 0;}
+#page_header input:focus:-ms-input-placeholder {transition: opacity 0.5s 0.5s ease; opacity: 0;}
+
+
+#page_header button[name=Search] {background: #985735;
+                                  color: #FFFFFF;
+                                  border: none;
+                                  padding: 0.5em 0.8em;
+                                  margin: 0;}
+#page_header .offscreen_noflow {height: 0;
+                                margin: 0;
+                                padding: 0;
+                                text-indent: -9999em;}
+#page_header .search_bar {margin: 0 .5em;}
+#page_header .search-box {width: 70%;}
+
+.myncbi2 {margin:0; padding:0;}
+.myncbi2 li {display:inline-block; padding-left:10px; padding-right:10px;}
+
+/* media query for screen sizes smaller than 1008px */
+@media only screen and (max-width: 1007px) {
+#page_header select {width: 15%;}
+}
+
+#page_header .blue_nav_bar {background-color: #336699;float: left;width: 100%;}
+#page_header select {min-width:115px;}
+#page_header .nih {float: left; overflow: hidden; background-color: #005295;}
+@media only screen and (max-width: 980px) {
+    #page_header .med_hidden {display: none;}
+}
+@media only screen and (max-width: 858px) {
+    #page_header .search-box {width: 50%;}
+}
+@media only screen and (max-width: 660px) {
+    #page_header .ncbi {padding:4.5em 1em 1em;}
+    #page_header .nih {width:100%;}
+    #page_header > nav > div.left > img {display:none;}
+    #page_header .search-box {width: 30%;}
+}
+
+
+#myncbi, #myncbi_register, #myncbi_sign_out
+{
+    display:none;
+}
+
+/*******Styles specific for BLAST header*******************/
+
+#navcontent a.lf, #type-a h1.lf, #navcontent span {
+  display: inline-block;
+  font-weight: bold;
+  margin: 0.2em 0 0 1em;
+  font-size: 25px; 
+  border-top:inherit;
+}
+
+#navcontent a.lf
+{
+    color:Black;
+}
+#navcontent  #brc {
+  font-size: 120%;
+  margin-left: 0;
+}
+
+#navcontent ul, #navcontent ul li {
+  display: inline-block;
+  margin-right:1em;
+}
+#navcontent ul 
+{
+    margin: 0;
+}
+
+/*click color*/
+#navcontent a:hover,#blnav li.active a:hover, h1.lf a:hover, #type-a h1.lf a:hover  
+{
+    color: rgba(0, 0, 0, 0.6);/*0,0,0,.6*/
+}
+img#logo {
+    height:80px !important;
+}
+ul#blnav {
+    position:relative;
+    bottom:-40px;
+}
+.rf {
+  float: right;
+}
+
+body .rf a {
+  color:#ffffff;  
+  font-size:25px;
+  font-weight:normal;
+}
+/*'home' color*/
+#blnav li.active a {
+  color:#ffffff;
+}
+
+
+#navcontent span#trdm {
+  font-size: 12px;
+  margin-top: -2px; 
+  margin-left: -2px;
+  margin-right: 0;
+  padding-top: 0;
+}
+
+h1.lf a, #type-a h1.lf a {
+  color: black;
+}
+
+#navcontent span.brcrmbsign {
+ 
+  margin: 0;
+  padding-top: 0; 
+  font-family: verdana;
+  font-size: 16px;
+}
+
+/*declartions from standard_base.css*/
+/*.left {
+  float: left;
+}
+-----------------------------*/
+.right {
+  float: right;
+}
+
+#page_header, #page_header *
+{
+    font-family: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+}
+
+/******Footer styles************/

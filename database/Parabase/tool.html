@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<META NAME="keywords" CONTENT="parabse, Parabase" />
+<title>Parabase</title>
+<link rel="stylesheet" type="text/css" href="css/header.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/google-fonts.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/home.css" media="screen" />
+<body id="type-d">
+<!--<div id="browsers_ajax"></div>-->
+<div id="wrap">
+            	
+    <header id="page_header" role="banner">
+        <div class="bg-gray header-div">
+        <nav class="top-nav" id="navcontent" role="navigation">
+            <a class="lf" href="http://2017.igem.org/Team:NCTU_Formosa"><img id="logo" alt="NCTU_Formosa" src="images/logo.png"></a>
+            <span class="rf">            
+            <ul id="blnav">
+                <li  class="first active"><a href="http://web.it.nctu.edu.tw/~nctu_formosa/Parabase/" title="Parabase Home">Home</a></li>
+                <li  class="recent "><a href="tool.html">Tools</a></li>                
+                <li  class="saved "><a href="https://www.facebook.com/NCTUFormosa/">Contact Us</a></li>
+                <li  class="last documentation "><a href="help.html">Help</a></li>                
+            </ul>
+            </span>
+        </nav>
+        </div>                
+        </header>
+        
+        <div id="content-wrap">
+        <div id="content">
+            <div id="top">
+            <div id="homeDescr" class="clearfix">
+            <h1 class="lf">Search Parabase</h1>	
+            <div  id="blast_desc"><span><span>Parabase</span>
+            can be search by Host species, Pathogen species, antifungal peptides' id in parabase and antifungal peptides' amino acid sequences
+            </span>
+            <form enctype="multipart/form-data" action="search.php" method="get">
+    <p>
+    <select name="Select" style="width: 200px;">
+    <option value="Host">Search by Host</option>
+    <option value="Pathogen">Search by Pathogen</option>
+    <option value="ParabaseID">Search by Parabase id</option>
+    <option value="Sequence">Search by sequence</option>
+    </select>
+    <label><input type="text" name="Keyword"></label>
+    </p>
+    <p>
+    <input type="reset" value="Reset""><input type="submit" value="Submit">
+    </p>
+</form>
+            </div>
+            <h1 class="lf">Predict Parabase</h1>
+            <div  id="blast_desc"><span><span>Parabase</span>
+            can predict whether a peptide has antifungal activity by its amino acid sequences. Inputs must be in fasta format
+            </span>
+            <form enctype="multipart/form-data" action="predict.php" method="post">
+    <p>
+    <label>Sequence:<textarea name="Sequence" cols="50" rows="5"></textarea></label>
+    </p>
+    <p>
+    <label>Upload file(fasta.txt):<input type="file" name="File" style="width:300px;"></label>
+    </p>
+    <p>
+    <input type="reset" value="Reset"><input type="submit" value="Submit">
+    </p>
+</form>
+        <!--   
+            <div id="chooseprog" class="section clearfix">
+            </div>
+        -->    
+        <!--
+        <div id="wrapper">
+            <div id="main">
+                <div id="top">
+                    <div id="main_textarea">
+                            
+                    </div>
+                    <div id="main_functionarea">
+                        <div id="fp1" class="function_position">
+                            <a href="searchtool.html" class="function_icon" id="search_tool" title="Search">
+                                <img alt="Search" src="images/search_tool.png">
+                            </a>
+                        </div>
+                        <div id="fp2" class="function_position">
+                            <a href="predicttool.html" class="function_icon" id="predict_tool" title="Predict">
+                                <img alt="Predict" src="images/predict_tool.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        -->
+        <!--
+        <div class="footlogo"></div>
+    
+    <div id="index_footer">
+        <div class="conent">
+            <ul id="index_foot_list" style="list-style-image: none;list-style-type:none;">
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li><a href="http://2017.igem.org/Team:NCTU_Formosa" style="font-size:16px;color:#FFF;"><b>Home</b></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li> <a href="#" style="font-size:16px;color:#FFF;"><b>Project</b></a></li>
+                        <li><a href="#">Description</a></li>
+                        <li><a href="#">Parabase</a></li>
+                        <li><a href="#">IoT</a></li>
+                        <li><a href="#">Biobricks &amp; Validation</a></li>
+                        <li><a href="#">Demonstration</a></li>
+                        <li><a href="#">Improvement</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li> <a href="#" style="font-size:16px;color:#FFF;"><b>Validation</b></a></li>
+                        <li><a href="#">Peptide Experiment</a></li>
+                        <li><a href="#">Fungal Experiment</a></li>
+                        <li><a href="#">Plant</a></li>
+                        <li><a href="#">Results</a></li>
+                        <li><a href="#">Safety</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li><a href="#" style="font-size:16px;color:#FFF;"><b>Parts</b></a></li>
+                        <li><a href="#">Basic Parts</a></li>
+                        <li><a href="#">Composite Parts</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li><b>Human Practice</b></li>
+                        <li><a href="#">Study</a></li>
+                        <li><a href="#">Education</a></li>
+                        <li><a href="#">Collaboration</a></li>
+                        <li><a href="#">Activity</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li><b>Achievement</b></li>
+                        <li><a href="#">Medal Criteria</a></li>
+                        <li><a href="#">Awards</a></li>
+                        <li><a href="#">Attribution</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul style="list-style-image: none;">
+                        <li><b>Team</b></li>
+                        <li><a href="#">Members</a></li>
+                        <li><a href="#">nstructors</a></li>
+                        <li><a href="#">Documents</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </div>
+        <div class="footer_logo">
+
+            <a href="#" target="_blank">
+<img style="margin:10px;FLOAT:LEFT;top:30px;position:relative;" src="http://2016.igem.org/wiki/images/9/9a/Phison_logo_070731%28%E6%9C%80%E5%BE%8C%E7%89%88%E6%9C%AC%29_Outline.png" width="150px">
+</a>
+
+            <a href="#" target="_blank">
+<img style="margin:10px;FLOAT:LEFT;" src="http://2016.igem.org/wiki/images/d/d3/%E4%BA%A4%E5%A4%A7%E8%B3%87%E5%B7%A5logo.png" width="100px">
+</a>
+
+            <a href="#" target="_blank">
+<img style="margin:10px;FLOAT:LEFT;" src="http://2016.igem.org/wiki/images/3/35/%E4%B8%AD%E8%88%88%E5%A4%A7%E5%AD%B8%E6%98%86%E8%9F%B2%E7%B3%BB.PNG" width="100px"></a>
+
+            <a href="#" target="_blank">
+<img style="margin:10px;FLOAT:LEFT;" src="http://2016.igem.org/wiki/images/8/81/Nctu-alumni.png" width="100px">
+</a>
+
+            <img STYLE="margin:10px;FLOAT: LEFT;" src="http://2016.igem.org/wiki/images/d/d7/NCTU.png" width="100px">
+            <br>NCTU_Formosa
+            <a href="https://www.facebook.com/pages/NCTU_Formosa-IGEM-team/267841893250331?fref=ts" target="_blank">
+        	<img src="http://2016.igem.org/wiki/images/a/ab/NCTU_FORMOSA_Facebook_LINK.png" width="21vw"></a><br>
+            <a href="http://www.nctu.edu.tw/" style="text-decoration:none;color:#999;" target="_blank">National Chiao Tung University</a><br> Engineering Building 6 EF455, 1001 University Road, Hsinchu 300, Taiwan, ROC.
+        </div>
+    </div>    
+    -->         
+</body>
+</html>

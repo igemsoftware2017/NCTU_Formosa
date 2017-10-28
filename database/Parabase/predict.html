@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<META NAME="keywords" CONTENT="parabse, Parabase" />
+<title>Parabase</title>
+<link rel="stylesheet" type="text/css" href="css/header.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/google-fonts.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/home.css" media="screen" />
+<body id="type-d">
+<!--<div id="browsers_ajax"></div>-->
+<div id="wrap">
+            	
+    <header id="page_header" role="banner">
+        <div class="bg-gray header-div">
+        <nav class="top-nav" id="navcontent" role="navigation">
+            <a class="lf" href="http://2017.igem.org/Team:NCTU_Formosa"><img id="logo" alt="NCTU_Formosa" src="images/logo.png"></a>
+            <span class="rf">            
+            <ul id="blnav">
+                <li  class="first active"><a href="http://web.it.nctu.edu.tw/~nctu_formosa/Parabase/" title="Parabase Home">Home</a></li>
+                <li  class="recent "><a href="">Statistics</a></li>                
+                <li  class="saved "><a href="https://www.facebook.com/NCTUFormosa/">Contact Us</a></li>
+                <li  class="last documentation "><a href="help.html">Help</a></li>                
+            </ul>
+            </span>
+        </nav>
+        </div>                
+        </header>
+        <div id="content-wrap">
+        <div id="content">
+            <div id="top">
+            <div id="homeDescr" class="clearfix">
+            <h1 class="lf">Predict Parabase</h1>
+            <div  id="blast_desc"><span><span>Parabase</span>
+            can predict whether a peptide has antifungal activity by its amino acid sequences. Inputs must be in fasta format
+            </span>
+            <form enctype="multipart/form-data" action="predict.php" method="post">
+    <p>
+    <label>Sequence:<textarea name="Sequence" cols="50" rows="5"></textarea></label>
+    </p>
+    <p>
+    <label>Upload file(fasta.txt):<input type="file" name="File" style="width:300px;"></label>
+    </p>
+    <p>
+    <input type="reset" value="Reset"><input type="submit" value="Submit">
+    </p>
+</form>
+</body>
+</html>
