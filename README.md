@@ -1,7 +1,7 @@
 # NCTU_Formosa
 This is a software code about NCTU_Formosa
 
-#It contain four files , they are crawler,predict model,database,and IoT. The description of files is as follows.
+#It contain four files , they are predict model,database,and IoT. The description of files is as follows.
 
   1,crawler : web crawler we use to collect data.
   
