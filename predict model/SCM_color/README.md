@@ -37,4 +37,3 @@ pip install numpy
 >
 >### Finally , you can see the visualize scorecard result of any peptide.
 
-![Rs AFP2](https://github.com/tedfytw1209/NCTU_Formosa/blob/master/predict%20model/SCM_color/RS_AFP2.PNG)
