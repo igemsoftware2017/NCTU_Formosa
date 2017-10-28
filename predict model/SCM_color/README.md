@@ -2,8 +2,10 @@
 This code is from "" with some modification
 
 To use the peptide visualize software,the following software are you needed.
+```
 pymol(website : http://www.pymol.org/)
 python3.6
+```
 And these python package are you needed.
 optparse
 numpy
