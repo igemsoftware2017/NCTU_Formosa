@@ -1,5 +1,5 @@
-# NCTU_Formosa
-This is a software code about NCTU_Formosa
+# NCTU_Formosa2017
+This is a software code about NCTU_Formosa2017
 
 #It contain three files , they are predict model,database,and IoT. The description of files is as follows.
 
