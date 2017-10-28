@@ -1,9 +1,9 @@
-Weather Predictin Model
+Disease Predictin Model
 ========
 
 This is a the CNN base model that can use for disease prediction
 
-How to use?
+How to use ?
 --------
 The following requirement are needed for using this model.
 
@@ -40,3 +40,4 @@ they are some options to modify the network hyper parameters
 
 `-g [--graph]` using tensorboard or not
 
+After training , model output a `.npz` format file ,it can be easy analyze by `tl.files.load_npz` function
