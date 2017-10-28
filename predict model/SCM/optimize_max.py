@@ -12,17 +12,14 @@ cmdparser.add_option("-f", "--file", action="store", dest="filename", default='e
 cmdparser.add_option("-g", "--gap", action="store", dest="gap", default=0, help="gap number, default is 0")
 cmdparser.add_option("-v", "--cvfold", action="store", dest="nfold", default=10, help="cross validation fold, default is 10")
 cmdparser.add_option("-G", "--Generation", action="store", dest="ngen", default=20, help="number of Generation, default is 20")
+cmdparser.add_option("-P", "--Population", action="store", dest="population", default=60, help="number of Population, default is 40")
 cmdparser.add_option("-V", "--Weight1", action="store", dest="w1", default=0.9, help="Weight 1 AUC, default is 0.9")
 cmdparser.add_option("-W", "--Weight2", action="store", dest="w2", default=0.1, help="Weight 2 Correlation, default is 0.1")
-cmdparser.add_option("-t", "--time", action="store", dest="time", default='0', help="time is a number to store time")
 cmdparser.add_option("-s", "--scorecard", action="store", dest="scorecard", default='0', help="input scorecard name")
-
+cmdparser.add_option("-p", "--pools", action="store", dest="pools", default=10, help="number of pools")
 (options, args) = cmdparser.parse_args()
 if(options.filename == 0):
     print ("  the input filename is not specified!! Please use -f or --file option...")
-    exit(" For more information, use -h or --help")
-if(options.time != '0' and options.scorecard == '0'):
-    print ("  the input scorecard is not specified!! Please use -s")
     exit(" For more information, use -h or --help")
 filename1 = options.filename
 v1= open(filename1)
@@ -31,9 +28,9 @@ nfold = int(options.nfold)
 ngen = int(options.ngen)
 W1 = float(options.w1)
 W2 = float(options.w2)
-time = int(options.time)
 scorecard = options.scorecard
-
+Population = int(options.population)
+pools = int(options.pools)
 
 gen_score=[]
 samplelist= v1.readlines()
@@ -653,52 +650,18 @@ class OneMax(genetic.Individual):
 
    
 if __name__ == "__main__":
-    pool=Pool(20) ###
-    if time==0:
-        mypop= []
-        mypop.append(OneMax(f[0]))
-        
-        for i in range(59):
-            #chromosome 是0到1000的數所組成的
-            mypop.append(OneMax([round(random.randint(0, 1000)) for gene in range(400)]))
-        
-        
-        env = Environment(OneMax, maxgenerations=ngen,size=60,optimum=None, population= mypop)
-        env.run()
-
-
-    elif time>0:
-        print('the time is '+str(time))
+    pool=Pool(pools)
+    t = 1
+    mypop= []
+    mypop.append(OneMax(f[0]))
+    if scorecard != '0':
         sosco_key,scoring,tmpscore=make_sc(scorecard)
-
-        batch = (n for n in samplelist)
-        p_sample=[]
-        n_sample=[]
-        for n in batch:
-            if n[1]=='1':
-                p_sample.append(n+[1])
-            elif n[1]=='0':
-                n.append(cuc_sc(n[0],sosco_key,scoring))
-                n_sample.append(n)
-                
-        n_sample.sort(key=lambda x: (x[2]))
-        
-        new_sample=p_sample+n_sample[:int(len(p_sample)*time/3)]
-        samplelist = [n for n in new_sample]
-        
-        mypop= []
         mypop.append(OneMax(tmpscore))
-        mypop.append(OneMax(f[0]))
-        
-        for i in range(58):
-            #chromosome 是0到1000的數所組成的
-            mypop.append(OneMax([round(random.randint(0, 1000)) for gene in range(400)]))
+        t += 1
     
+    for i in range(Population-t):
+        #chromosome 是0到1000的數所組成的
+        mypop.append(OneMax([round(random.randint(0, 1000)) for gene in range(400)]))
     
-        env = Environment(OneMax, maxgenerations=ngen,size=60,optimum=None, population= mypop)
-        env.run()
-    else:
-        print('something wrong')
-
-    
- 
+    env = Environment(OneMax, maxgenerations=ngen,size=Population,optimum=None, population= mypop)
+    env.run()
