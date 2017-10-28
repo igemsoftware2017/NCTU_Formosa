@@ -15,20 +15,21 @@ pip install multiprocessing
 >----------
 
 ACCCTTTTYYYYMMMMMACAC	1
+
 ACCAAMMMMTTTRRSSSSSSSS	0
 
 1 = positive class
+
 0 = negative class
 
-Example file
-1. crtr (Crystallization Training)
-2. crts (Crystallization Testing)
-3. istr (Solubility Training)
-4. ists (Solubility Testing)
+### Example file
 
+1. example_train : AFP_example(training_data)
 
->Optimization
->---------
+2. example_test : AFP_example(testing)
+
+Optimization
+---------
 Use `optimize_max.py` to make and optimize the scoring card
 ```
 python optimize_max.py -f [datafile]
@@ -36,27 +37,26 @@ python optimize_max.py -f [datafile]
 there are some options to run the code:
 
 `-g [--gap]` gap number ,default is 0
+
 `-v [--cvfold]` the fold of cross validation , default is 10
-`-G [--Generation]` number fo generation , default is 20
+
+`-G [--Generation]` number of generation , default is 20
+
+`-P [--Population]` number of population , default is 60
+
 `-V [--Weight1]` the AUC fitness weight , default is 0.9
+
 `-W [--Weight2]` the correlation weight , default is 0.1
 
-##################
-##  Prediction  ##
-##################
+`-s [--scorecard]` the scorecard for retrain
 
-Command line :
-python prediction.py training test scorecard
+`-p [--pools]` the numbers of multiprocessing , default is 10
 
-See option :
-python prediction.py -h
+#### note : you can use -h , --help to find more options and description
 
-#########################
-## Optimization Output ##
-#########################
+### Optimization Output
 
-file name :
-output_scorecard1
+file name :output_scorecard1
 
 file organization :
 gen_score:	(Generation Score)
@@ -64,14 +64,24 @@ best CV:	0
 best scoring:	(Best Score)
 best chromosome:	[400 propensity score of dipeptides (Check dipeptides order in dipep)]
 
-#########################
-##  Prediction Output  ##
-#########################
+Prediction
+--------
+Use `predict.py` to evaluate the scorecard
 
-file name :
-[name of test]_result.csv
-[name of test]_ori.csv (Original Score Card)
+```
+python predict.py -f [train data] -t [test data] -s [scorecard file]
+```
 
-Result file organization :
-[fitness score]	[fulltrain acc]	[crossvalidation acc]	[MCC]	[test acc]	[sensitivity]	[specificity]	[crossvalidation auc]	[R value]	[threshold]
+#### note : you can use -h , --help to find more options and description
 
+### Prediction output
+```
+---------- Result ----------
+FullTrain_acc = (The best k-fold accuracy of training data)
+CV acc(train) = (The accuracy of training data)
+CV auc(train) = (The AUC of training data)
+Theshold = (The best threshold)
+Test_acc = (The testing accuracy with theshold)
+Sensitivity = (The testing sensitivity with theshold)
+Specitivity = (The testing specificity with theshold)
+```

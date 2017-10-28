@@ -52,8 +52,6 @@ W2 = float(options.w2)
 f1= open(filename1)
 f2= open("dipep");
 f3 = open(filename2)
-f4= open(filename1+"_result.txt", "a")
-f5= open(filename1+"_ori.csv","w")
 nfold = int(options.nfold)
 
 #========== Load Traing Data ====================
@@ -124,7 +122,7 @@ for tmp in range(1):
     scoring = []
     so_scoring= []
     for x5 in sodipep_0:
-        eachscore = float(((float(dipep_0[x5])/y)-(float(dipep_1[x5])/z))*1000)
+        eachscore = float(((float(dipep_1[x5])/z)-(float(dipep_0[x5])/y))*1000)
         scoring.append(eachscore)
         so_scoring.append(eachscore)
     
@@ -149,8 +147,7 @@ for tmp in range(1):
         avg_aa_score[i] = avg_aa_score[i]/40
       
     ori_dipep_score = f[0]
-    f5.write(str(ori_dipep_score))
-    f5.close()
+
 
 #========== Read Score Val ======================
 count = 0
@@ -265,9 +262,9 @@ for i in range(nfold):
             clas= everysample[1]
         
             if ss> thre:
-                clas2= "0"
-            else:
                 clas2= "1"
+            else:
+                clas2= "0"
             if clas== "1" and clas2== "1":
                 TP+= 1
             elif clas== "1" and clas2== "0":
@@ -289,7 +286,7 @@ for i in range(nfold):
     high=0.0
     bottom=0.0
     for pp in range(0, len(TPRl)-2):
-        high= float(FPRl[pp+1])-float(FPRl[pp])
+        high= float(FPRl[pp])-float(FPRl[pp+1])
         bottom= float(TPRl[pp])+float(TPRl[pp+1])
         area= float(bottom*high)/2.0
         ARC+= area
@@ -326,16 +323,16 @@ while x<= sco[len(sco)-1]:
         ss= everysample[0]
         clas= everysample[1]
         if ss> thre:
-            clas2= "0"
-        else:
             clas2= "1"
-        if clas== "0" and clas2== "0":
+        else:
+            clas2= "0"
+        if clas== "1" and clas2== "1":
             TP+= 1
-        elif clas== "0" and clas2== "1":
-            FN+= 1
         elif clas== "1" and clas2== "0":
+            FN+= 1
+        elif clas== "0" and clas2== "1":
             FP+= 1
-        elif clas== "1" and clas2== "1":
+        elif clas== "0" and clas2== "0":
             TN+= 1
     ACC= ((TP+TN)/len(train))*100
     if ACC >= maxACC:
@@ -396,16 +393,16 @@ for everysample in test:
     ss= everysample[0]
     clas= everysample[1]
     if ss> thre:
-        clas2= "0"
-    else:
         clas2= "1"
-    if clas== "0" and clas2== "0":
+    else:
+        clas2= "0"
+    if clas== "1" and clas2== "1":
         TP+= 1
-    elif clas== "0" and clas2== "1":
-        FN+= 1
     elif clas== "1" and clas2== "0":
+        FN+= 1
+    elif clas== "0" and clas2== "1":
         FP+= 1
-    elif clas== "1" and clas2== "1":
+    elif clas== "0" and clas2== "0":
         TN+= 1
         
 totalACC = (((TP+TN)/len(test))*100)
@@ -416,25 +413,14 @@ print ("FullTrain_acc="+str(maxACC))
 print ("CV acc(train)="+str(kfoldacc*100))
 print ("CV auc(train)="+str(auc_score*100))
 print ("Theshold="+str(thre))
-print ("Best_acc="+str(totalACC))
+print ("Test_acc="+str(totalACC))
 print ("Sensitivity="+str(TP/(TP+FN)))
 print ("Specitivity="+str(TN/(TN+FP))+"\n")
 
 corr_pep = pearson_def(avg_aa_score,cur_aa_score)
 
-auc = ((1-bestfit) - (W2*(1-corr_pep)))/W1;
-f4.write('bestfit'+str(bestfit)+"\t")
-f4.write('maxACC'+str(maxACC)+"\t")
-f4.write('kfoldacc'+str(kfoldacc*100)+"\t")
-f4.write('MCC'+str(MCC)+"\t")
-f4.write('totalACC'+str(totalACC)+"\t")
-f4.write('Sensitivity'+str(TP/(TP+FN))+"\t")
-f4.write('Specitivity'+str(TN/(TN+FP))+"\t")
-f4.write('auc'+str(1-auc)+"\t")
-f4.write('corr_pep'+str(corr_pep)+"\t")
-f4.write('thre'+str(thre)+"\t")
-f4.write("\n")
-f4.close()
+auc = ((bestfit) - (W2*(corr_pep)))/W1;
+
 f3.close()
 f2.close()
 f1.close()
