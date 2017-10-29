@@ -1,5 +1,2 @@
-IoT talk : device and sensor code
+IoT talk : device and sensor
 ========
-This is a collection of IoT talk codes
-
-
