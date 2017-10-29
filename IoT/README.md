@@ -10,5 +10,5 @@ The description of files is as follows.
 
 2 data : the collection of row disease data and weather data we used
 
-3 IoT sensor : the collection of our IoT device code.
+3 IoT sensor : the collection of our IoT sensor code.
 
