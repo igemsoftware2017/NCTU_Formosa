@@ -4,15 +4,16 @@ The following requirements are needed for using the scoring card predicting mode
 
 `python>=3.6` with packages :`optparse`,`math`,`multiprocessing`
 
-You can use `pip` to install these packages
+These packages are all in python standard library.
+If you do not have these packages you can use `pip` to install these packages.
 ```
 pip install optparse
 pip install math
 pip install multiprocessing
 ```
 
->Scoring Card Data Format
->----------
+Scoring Card Data Format
+----------
 
 ACCCTTTTYYYYMMMMMACAC	1
 
