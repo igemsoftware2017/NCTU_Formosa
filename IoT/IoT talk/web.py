@@ -10,6 +10,7 @@ DAN.profile['d_name']= None # None for autoNaming
 DAN.device_registration_with_retry(ServerIP, Reg_addr)
 
 url = 'https://api.thingspeak.com/update?api_key=W0286CQGMR5QO11U'
+
 while True:
     try:
        value_1 = DAN.pull('get_Precp')
