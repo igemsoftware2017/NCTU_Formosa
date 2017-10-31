@@ -1,7 +1,5 @@
-#######################
-
-This code is from "" with some modification
-
+SCM_visualize
+--------
 To use the peptide visualize software,the following requirements are needed.
 
 `pymol` can ce download in
@@ -37,3 +35,4 @@ pip install numpy
 >
 >### Finally , you can see the visualize scorecard result of any peptide.
 
+This code is from [Shinn-Ying Ho's Lab website](http://iclab.life.nctu.edu.tw/iclab_webtools/SCMBYK/download.php) with some modification.
