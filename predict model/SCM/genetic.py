@@ -46,7 +46,7 @@ class Individual(object):
     # sample mutation method
     def _pick(self, gene):
         "chooses a random allele to replace this gene's allele."
-        self.chromosome[gene] = random.choice(self.alleles)
+        self.chromosome[gene] = random.randint(boundMIN,boundMAX)
     
     # sample crossover method
     def _twopoint(self, other):
