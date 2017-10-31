@@ -20,4 +20,4 @@ Our database website is available at [Parabase](http://web.it.nctu.edu.tw/~nctu_
   
   2 database : the code we use for database website.
   
-  3 IoT : the code we use for the prediction model and IoT sensor.
+  3 IoT : the code we use for the prediction model and IoT talk system.
