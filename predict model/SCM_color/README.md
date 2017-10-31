@@ -38,7 +38,7 @@ Then,key in the PDB , propensity score , smooth parameter and the output file(.p
 
 ### Finally , you can see the visualize scorecard result of any peptide.
 
-#### Auto Perl script
+#### #Auto Perl script
 If you dont don't want to key in every pdb file by our hand. 
 You can use `auto_perl.py` to automatically search `.pdb` file and run visualize perl script.
 ```
