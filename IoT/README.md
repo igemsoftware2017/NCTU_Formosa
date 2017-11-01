@@ -2,7 +2,7 @@ IoT software
 ========
 This is a collection of IoT prediction model and sensor code
 
-It contain three files , they are data,disease_model and IoT talk. 
+It contain three files : data,disease_model and IoT talk. 
 --------
 The description of files is as follows.
 
