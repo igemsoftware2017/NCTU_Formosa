@@ -1,5 +1,1 @@
-Parabase
-========
-This is a code of our web database.
-
-Our database website is available at [Parabase](http://web.it.nctu.edu.tw/~nctu_formosa/Parabase/)
+README for Parabase--------all data used for searching antifungal peptides are stored in Parabase.db  -all css style sheet are placed in file css  -index.php, counter.txt is used in the main page of the website  -search.html, search.php are the web pages for search system  -pridict.html, predict.php, visualize.php are web pages for predict system  -all images except the icon are placed in file image  -dipep.jpg, output_scorecard22.jpg are used for scoring peptides  

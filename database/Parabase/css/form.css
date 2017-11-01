@@ -1,0 +1,211 @@
+/* 
+   Blue Dream
+   Written by Teylor Feliz  http://www.admixweb.com
+   */
+
+#blueDream table { 
+    /*background:#D3E4E5;*/
+    /*width:944px;*/
+    talbe-layout:fixed;
+    border:1px solid grey;
+    border-collapse:collapse;
+    color:#fff;
+    font-family: 'Ubuntu Condensed', arial, helvetica, sans-serif;
+    font-size: 13pt;
+}
+#blueDream caption { 
+    border:1px solid #5C443A;
+    color:#5C443A;
+    font-weight:bold;
+    /*letter-spacing:1px;*/
+    padding:6px 4px 10px 10px;
+    text-align:left;
+/*text-transform:uppercase;*/
+}
+#blueDream td {
+    color: black;
+    /*padding:.4em;*/
+    padding:7pt;
+    
+}
+#blueDream th {
+    color:#000000;
+    padding:.4em;
+    font-weight:bold;
+    vertical-align:middle;
+}
+#blueDream tr { 
+    border:1px solid black;
+}
+#blueDream thead th, #blueDream tfoot th { 
+    /*background:#5C443A;*/
+    color:#acdd4a;
+    padding:3px 10px 3px 10px;
+    text-align:left;
+/*text-transform:uppercase;*/
+}
+
+#blueDream tbody td a { 
+    color:#363636;
+    /*text-decoration:none;*/
+}
+#blueDream tbody td a:visited { 
+    color:gray;
+/*text-decoration:line-through;*/
+}
+#blueDream tbody td a:hover { 
+/*text-decoration:underline;*/
+}
+#blueDream tbody th a { 
+    color:#1e9cd0;
+    font-weight:normal;
+    text-decoration:none;
+}
+/*
+#blueDream tbody th a:hover { 
+    color:#363636;
+}
+*/
+#blueDream tbody td+td+td+td a { 
+    /*background-image:url('../images/bullet_blue.png');*/
+    background-position:left center;
+    background-repeat:no-repeat;
+    color:#03476F;
+    padding-left:15px;
+}
+#blueDream tbody td+td+td+td a:visited { 
+    /*background-image:url('../images/bullet_white.png');*/
+    background-position:left center;
+    background-repeat:no-repeat;
+}
+
+#blueDream tbody th {
+    width:200px;
+    background:#4498d4;
+    color:#FFFFFF;
+    padding:3px 10px 3px 10px;
+    text-align:left;
+    border-right: solid black 1px;
+/*text-transform:uppercase;*/
+}
+#blueDream tbody td { 
+    text-align:left;
+    vertical-align:center;
+}
+#blueDream tfoot td { 
+    /*background:#5C443A;*/
+    color:#FFFFFF;
+    padding-top:3px;
+}
+#blueDream .odd { 
+    background:#fff;
+}
+/*
+#blueDream tbody tr:hover { 
+    background:#99BCBF;
+    border:1px solid #03476F;
+    color:#000000;
+}
+*/
+
+
+.linkOut {
+font-weight:bold;
+}
+
+
+#blueDream-in table { background:#D3E4E5;
+		      talbe-layout:fixed;
+		      width:730px;
+		      border:1px solid gray;
+		      border-collapse:collapse;
+		      color:#fff;
+		      font:normal 12pt 'Ubuntu Condensed',verdana, arial, helvetica, sans-serif;
+		    }
+#blueDream-in caption { border:1px solid #5C443A;
+			color:#5C443A;
+			font-weight:bold;
+			/*letter-spacing:1px;*/
+			padding:6px 4px 8px 0px;
+			text-align:center;
+		      /*text-transform:uppercase;*/
+		      }
+#blueDream-in caption .slide {
+
+}
+#blueDream-in caption .btn-slide {
+/*background: url(../images/white-arrow.gif) no-repeat right -50px;*/
+/*padding: 10px 10px 0 0;*/
+
+
+}
+#blueDream-in td,  #blueDream-in th { 
+    color:#000;
+    padding:.4em;
+}
+#blueDream-in tr { border:1px dotted gray;
+		 }
+#blueDream-in thead th, #blueDream-in tfoot th { background:#5C443A;
+						 color:#000;
+						 //color:#FFFFFF;
+						 padding:3px 10px 3px 10px;
+						 text-align:left;
+					       /*text-transform:uppercase;*/
+					       }
+
+#blueDream-in tbody td a, 
+#blueDream-in caption a { 
+    color:#363636;
+    text-decoration:none;
+}
+#blueDream-in tbody td a:visited,
+#blueDream-in caption a:visited { 
+    color:gray;
+/*text-decoration:line-through;*/
+}
+#blueDream-in tbody td a:hover,
+#blueDream-in caption a:hover { 
+     text-decoration:underline;
+ }
+#blueDream-in tbody th a { 
+    color:#363636;
+    font-weight:normal;
+    text-decoration:none;
+}
+#blueDream-in tbody th a:hover { color:#363636;
+			       }
+#blueDream-in tbody td+td+td+td a { background-image:url('../images/bullet_blue.png');
+				    background-position:left center;
+				    background-repeat:no-repeat;
+				    color:#03476F;
+				    padding-left:15px;
+				  }
+#blueDream-in tbody td+td+td+td a:visited { background-image:url('../images/bullet_white.png');
+					    background-position:left center;
+					    background-repeat:no-repeat;
+					  }
+#blueDream-in tbody th {
+    width:100px;
+    /*background:#5C443A;*/
+    background:#C0D4D3;
+    color:#000;
+    /*color:#FFFFFF;*/
+    padding:3px 10px 3px 10px;
+    text-align:left;
+/*text-transform:uppercase;*/
+}
+#blueDream-in tbody td { text-align:left;
+			 vertical-align:center;
+			 background:#FFF;
+		       }
+#blueDream-in tfoot td { background:#5C443A;
+			 color:#FFFFFF;
+			 padding-top:3px;
+		       }
+#blueDream-in .odd { background:#fff;
+		   }
+#blueDream-in tbody tr:hover { background:#99BCBF;
+			       border:1px solid #03476F;
+			       color:#000000;
+			     }
+

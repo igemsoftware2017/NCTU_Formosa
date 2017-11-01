@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<META NAME="keywords" CONTENT="parabse, Parabase" />
+<title>Parabase</title>
+<link rel="stylesheet" type="text/css" href="css/header.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/google-fonts.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/footer.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/home.css" media="screen" />
+<!--
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/blast.js"></script>
+<script type="text/javascript" src="js/remote_data_provider.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
+-->
+</head>
+<?php
+$counter = intval(file_get_contents("counter.dat"));
+ 
+if (!isset($_COOKIE['visitor'])) {
+    $counter++;
+    $fp = fopen("counter.dat", "w");
+    flock($fp, LOCK_EX);   // do an exclusive lock
+    fwrite($fp, $counter);
+    flock($fp, LOCK_UN);   // release the lock
+    fclose($fp);
+    setcookie("visitor", 1, time()+3600);
+}
+echo "Visitors: " . $counter;
+?>
+<body id="type-d">
+<!--<div id="browsers_ajax"></div>-->
+<div id="wrap">
+            	
+    <header id="page_header" role="banner">
+        <div class="bg-gray header-div">
+        <nav class="top-nav" id="navcontent" role="navigation">
+            <a class="lf" href="http://2017.igem.org/Team:NCTU_Formosa"><img id="logo" alt="NCTU_Formosa" src="images/logo.png"></a>
+            <span class="rf">            
+            <ul id="blnav">
+                <li  class="first active"><a href="http://web.it.nctu.edu.tw/~nctu_formosa/Parabase/" title="Parabase Home">Home</a></li>
+                <li  class="recent "><a href="">Statistics</a></li>                
+                <li  class="saved "><a href="https://www.facebook.com/NCTUFormosa/">Contact Us</a></li>
+                <li  class="last documentation "><a href="help.html">Help</a></li>                
+            </ul>
+            </span>
+        </nav>
+        </div>                
+        </header>
+<div id="content-wrap">
+        <div id="content">
+            <div id="top">
+            <div id="homeDescr" class="clearfix">
+            <h1 class="lf">Parabase: a simple and applicable peptide prediction system with validation of artificial intelligence</h1>	
+            <div  id="blast_desc"><span><span>Parabase</span> is now a database for antifungal peptides which have the most peptides compared to all databases available in the Internet. To make data easy to search, the relationship between pathogen, disease, peptides is clear on Parabase. Apart from peptides most databases such as NCBI, CAMP have (which could be experiment validated), Parabase tries to find out more peptides with antifungal ability based on Scoring Card Methods. While providing the largest amount of antifungal peptides, we provide a system for all users to test the antifungal activity of all peptides.
+            </span>
+            </div>
+            
+<div id="chooseprog" class="section clearfix">
+            <h2>Parabase Tools</h2>
+            <div id="control_tools">
+            <a href="predict.html" class="left spFirst" id="homeBlastn"><img class="control_tools" src="images/predict-system.png"/></a>
+            <div id="transl" class="left">
+            </div>
+            <a href="search.html" class="left" id="homeBlastp"><img class="control_tools" src="images/search-system.png"/></a>
+            </div>
+</div>
+<div class="col-md-3" style="
+    position: relative;
+    max-width: 25%;
+    left: 75%;
+    bottom: 500px;
+">
+							<h2 class="title">Current curation</h1>
+														<h4>Release: Oct. 1, 2017 </h4>
+							<hr style="background: none;  border-bottom-style:dashed; border-bottom-color: #ECECEC">
+														<h4>Number of peptides: 1334 </h4>
+							<hr style="background: none;  border-bottom-style:dashed; border-bottom-color: #ECECEC">
+														<h4>Number of pathogens: ??? </h4>
+							<hr style="background: none;  border-bottom-style:dashed; border-bottom-color: #ECECEC">
+														<h4>Number of host species: 161 </h4>
+							<hr style="background: none;  border-bottom-style:dashed; border-bottom-color: #ECECEC">
+														<h4>Number of articles: 1026 </h4>
+							<hr style="background: none;  border-bottom-style:dashed; border-bottom-color: #ECECEC">
+														
+</div>
+</body>
+</html>

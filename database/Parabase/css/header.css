@@ -105,6 +105,13 @@ box-shadow: 3px 3px 3px rgba(0,0,0,.3);
     #page_header > nav > div.left > img {display:none;}
     #page_header .search-box {width: 30%;}
 }
+/**/
+@media only screen and (max-width: 975px) {
+    img#logo {display:none;}
+    nav#navcontent {height:70px;}
+    span.rf {float:left;}
+    ul#blnav {padding-left: 20px}
+}
 
 
 #myncbi, #myncbi_register, #myncbi_sign_out
@@ -146,14 +153,14 @@ box-shadow: 3px 3px 3px rgba(0,0,0,.3);
     color: rgba(0, 0, 0, 0.6);/*0,0,0,.6*/
 }
 img#logo {
-    height:80px !important;
+    height:70px !important;
 }
 ul#blnav {
     position:relative;
     bottom:-40px;
 }
 .rf {
-  float: right;
+  float: right; /*right*/
 }
 
 body .rf a {
