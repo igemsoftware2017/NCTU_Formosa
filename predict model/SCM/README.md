@@ -4,15 +4,16 @@ The following requirements are needed for using the scoring card predicting mode
 
 `python>=3.6` with packages :`optparse`,`math`,`multiprocessing`
 
-You can use `pip` to install these packages
+These packages are all in python standard library.
+If you do not have these packages you can use `pip` to install these packages.
 ```
 pip install optparse
 pip install math
 pip install multiprocessing
 ```
 
->Scoring Card Data Format
->----------
+Scoring Card Data Format
+----------
 
 ACCCTTTTYYYYMMMMMACAC	1
 
@@ -30,7 +31,7 @@ ACCAAMMMMTTTRRSSSSSSSS	0
 
 Optimization
 ---------
-Use `optimize_max.py` to make and optimize the scoring card
+Use `optimize_max.py` to build up and optimize the scoring card model.
 ```
 python optimize_max.py -f [datafile]
 ```
@@ -85,3 +86,5 @@ Test_acc = (The testing accuracy with theshold)
 Sensitivity = (The testing sensitivity with theshold)
 Specitivity = (The testing specificity with theshold)
 ```
+
+This code is from [Shinn-Ying Ho's Lab website](http://iclab.life.nctu.edu.tw/iclab_webtools/SCMBYK/download.php) with some modification.

@@ -18,7 +18,7 @@ The `iot_sensor.ino` is a part of our IoT talk system that can sensing the weath
 such as temperature,humidity,pressure and rainfall. After that,the device will send these data to the
  IoT talk server.
 
-These libraries are requested of running this code.
+These libraries are requested to running this code.
 ```
 <Bridge.h>
 <BridgeClient.h>

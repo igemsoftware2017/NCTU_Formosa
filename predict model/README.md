@@ -1,6 +1,6 @@
 Prediction software
 ========
-This is a code about our antifungal prediction model.
+These are codes about our antifungal prediction model.
 
 ## It contains two parts , SCM model and the SCM_color.
 
