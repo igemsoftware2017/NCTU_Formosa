@@ -31,9 +31,9 @@ ACCAAMMMMTTTRRSSSSSSSS	0
 
 Optimization
 ---------
-Use `optimize_max.py` to make and optimize the scoring card
+Use `optimize.py` to make and optimize the scoring card
 ```
-python optimize_max.py -f [datafile]
+python optimize.py -f [training_datafile]
 ```
 there are some options to run the code:
 
