@@ -19,11 +19,51 @@ if(options.filenamet == 0):
 if(options.scorename == 0):
     print ("  the input scorecard is not specified!! Please use -s or --score option...")
     exit(" For more information, use -h or --help")
-
+#all key to zero
+filename3 = options.filename
+filename1 = options.filenamet
+scorename = options.scorename
+gap = int(options.gap)
+W1 = float(options.w1)
+W2 = float(options.w2)
+nfold = int(options.nfold)
+# aalist and dipep
+aalist= ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+dipep = [x1+x2 for x1 in aalist for x2 in aalist]
+boundMAX = 1000
+boundMIN = 0
+length = 400 
+#========== Load Traing Data ====================
+v1= open(filename3)
+samplelist= [n.strip('\n').split('\t') for n in v1.readlines()]
+v1.close()
+### some function
+#initialize dic to all 0
+def ini_dic(dic=None,key_list=None):
+    if key_list:
+        return {k:0 for k in key_list }
+    elif dic:
+        return {k:0 for k in dic.keys() }
+    else:
+        return None
+#count the aa score
+def count_aa_score(scorecard):
+    avg_aa_score = [0]*20
+    k=0;
+    for i in range(400):
+        if (k == 20):
+            k=0
+        avg_aa_score[k] += float(scorecard[i])
+        avg_aa_score[int(i/20)] += float(scorecard[i])
+        k = k+1
+    for i in range(20):
+        avg_aa_score[i] = avg_aa_score[i]/40
+    return avg_aa_score
+#calculate average
 def average(x):
     assert len(x) > 0
     return float(sum(x)) / len(x)
-
+#calculate corr
 def pearson_def(x, y):
     assert len(x) == len(y)
     n = len(x)
@@ -39,194 +79,50 @@ def pearson_def(x, y):
         diffprod += xdiff * ydiff
         xdiff2 += xdiff * xdiff
         ydiff2 += ydiff * ydiff
-
     return diffprod / math.sqrt(xdiff2 * ydiff2)
+#read scoring card by filename
+def make_sc(scorecard):
+    f3 = open(scorecard)
+    count = 0
+    tmpscore = []
+    for line in f3.readlines():
+        if count==3:
+            tmpscore1 = line.strip('\n').split('[')
+            tmpscore2 = tmpscore1[1].strip(']').split(',')
+            for tmpval in tmpscore2:
+                tmpscore.append(float(tmpval))
+        count = count + 1
+    f3.close()
+    return tmpscore
+#Read Score List
+tmpscore = make_sc(scorename)
+#Read Score dic
+scoring= {dipep[i] : tmpscore[i] for i in range(len(dipep))}
 
-
-filename3= options.filename
-filename1= options.filenamet
-filename2= options.scorename
-gap = int(options.gap)
-W1 = float(options.w1)
-W2 = float(options.w2)
-f1= open(filename1)
-f2= open("dipep");
-f3 = open(filename2)
-nfold = int(options.nfold)
-
-#========== Load Traing Data ====================
-v1= open(filename3)
-samplelist= v1.readlines()
-v1.close()
-
-#========== Original Score =================
-aalist= ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
-dipep_0= {}
-for x1 in aalist:
-    for x2 in aalist:
-        dipep_0[x1+x2]= 0
-dipep_1= {}
-for x1 in aalist:
-    for x2 in aalist:
-        dipep_1[x1+x2]= 0
-
-sodipep_0=[n for n in dipep_0.keys()]
-sodipep_0.sort()
-sodipep_1= [n for n in dipep_1.keys()]
-sodipep_1.sort()
-f = {}
-for tmp in range(1):
-    k = 0
-    samplelistsub = []
-    
-    for x1 in aalist:
-        for x2 in aalist:
-            dipep_0[x1+x2]= 0
-    
-    for x1 in aalist:
-        for x2 in aalist:
-            dipep_1[x1+x2]= 0
-    
-    for line in samplelist:
-        if (tmp==k%1):
-            samplelistsub.append(line)
-        k = k+1
-    
-    for line in samplelistsub:       
-        tmpp = line.split('\t')
-        seq= tmpp[0]
-        tmpp = tmpp[1].split('\n')
-        tmpp = tmpp[0]
-        clas = tmpp[0:1]
-        #print seq
-        if int(clas)==0:
-            for aa in range(0, len(seq)-(gap+1)):
-                tempaa=seq[aa]+seq[aa+(gap+1)]
-                dipep_0[tempaa]= int(dipep_0[tempaa])+1
-                #print tempaa
-
-        elif int(clas)==1:
-            for aa in range(0, len(seq)-(gap+1)):
-                tempaa=seq[aa]+seq[aa+(gap+1)]
-                dipep_1[tempaa]= int(dipep_1[tempaa])+1
-
-    y=0
-    for x3 in sodipep_0:
-        y= y+dipep_0[x3]
-           
-
-    z=0
-    for x4 in sodipep_1:
-        z= z+dipep_1[x4]
-
-    scoring = []
-    so_scoring= []
-    for x5 in sodipep_0:
-        eachscore = float(((float(dipep_1[x5])/z)-(float(dipep_0[x5])/y))*1000)
-        scoring.append(eachscore)
-        so_scoring.append(eachscore)
-    
-    so_scoring.sort()
-    new_scoring= []
-    for i in scoring:
-        n= (i-so_scoring[0])/(so_scoring[-1]-so_scoring[0])*1000
-        new_scoring.append(round(n))
-    
-    f[tmp] = new_scoring
-
-    avg_aa_score = [0 for i in range(20)]
-    k=0;
-    for i in range(400):
-        if (k == 20):
-           k=0
-        avg_aa_score[k] = avg_aa_score[k] + f[0][i]
-        avg_aa_score[int(i/20)] = avg_aa_score[int(i/20)] + f[0][i] 
-        k = k+1
-        
-    for i in range(20):
-        avg_aa_score[i] = avg_aa_score[i]/40
-      
-    ori_dipep_score = f[0]
-
-
-#========== Read Score Val ======================
-count = 0
-tmpscore = []
-for line in f3.readlines():
-    if count==2:
-        tmpscore1 = line.split(':')
-        bestfit = float(tmpscore1[1]);
-        bestfit = bestfit/100;
-    if count==3:
-        tmpscore1 = line.split('[')
-        tmpscore2 = tmpscore1[1].split(',')
-        for tmpval in tmpscore2:
-            t = tmpval.split(']');
-            tmpscore.append(float(t[0]))
-    count = count + 1
-
-cur_aa_score = [0 for i in range(20)]
-k=0
-for i in range(400):
-    if (k == 20):
-        k=0
-    cur_aa_score[k] = cur_aa_score[k] + tmpscore[i]
-    cur_aa_score[int(i/20)] = cur_aa_score[int(i/20)] + tmpscore[i]
-    k = k+1
-for i in range(20):
-    cur_aa_score[i] = cur_aa_score[i]/40    
-#========== Read Score Key ======================
-scoring= {}
-count = 0
-for line in f2:
-    scoring[line[0:2]]= tmpscore[count];
-    count = count+1
-
-sosco_key= [n for n in scoring.keys()]
-sosco_key.sort()
-
-#========== Training =======================
-boundMAX = 1000
-boundMIN = 0
-length = 400
+#make ts_file
 sco= []
 x= 0.0
-dipep_test= {}
-for x1 in sosco_key:
-    dipep_test[x1]= 0
-ts_scor_clas= []
+dipep_test = ini_dic(key_list=dipep)
 ts_file= []
-ts_pop= []
-
 index = 1
 indexl = []
 for line in samplelist:
-    tmp = line.split('\t')
-    seq= tmp[0]
-    tmp = tmp[1].split('\n')
-    tmp = tmp[0]
-    clas = tmp[0:1]
-    for fea in dipep_test:
-        dipep_test[fea]= 0
-    
+    assert len(line)==2
+    seq = line[0]
+    clas = line[1]
+    dipep_test = ini_dic(dipep_test)
     for aa in range(0, len(seq)-(gap+1)):  
         tempaa= seq[aa]+seq[aa+(gap+1)]
-        dipep_test[tempaa]= int(dipep_test[tempaa])+1
+        dipep_test[tempaa] += 1
     gg=0.0
-    for x6 in sosco_key:
-        gg+= float((scoring[x6])*dipep_test[x6])
+    for x6 in dipep:
+        gg += float((scoring[x6])*dipep_test[x6])
         
-    ts_scor_clas.append(gg/(len(seq)-(gap+1))) 
-    ts_scor_clas.append(clas)
-    ts_file.append(ts_scor_clas)
-    ts_scor_clas= [] 
+    ts_file.append([gg/(len(seq)-(gap+1)),clas])
     indexl.append(index % nfold)
     index = index + 1
 
-
-###########################################################
-# K-fold Cross Validation
-totalACC = 0
+# K-fold Cross to test training set
 auc_score = 0
 kfoldacc = 0
 for i in range(nfold):
@@ -239,17 +135,14 @@ for i in range(nfold):
         else:
             train.append(ts_file[count])
         count = count + 1
-
-    # Train to find Best Score
     for everysample in train:
         sco.append(everysample[0])
-    sco.sort() 
-
     TPRl=[]
     FPRl=[]
-    x= sco[0]
+    x= min(sco)
+    max_s = max(sco)
     maxacc = -1
-    while x<= sco[len(sco)-1]:
+    while x<= max_s:
         thre= x
         TP=0.000001
         FP=0.000001
@@ -295,31 +188,20 @@ for i in range(nfold):
 auc_score = (auc_score/nfold)
 kfoldacc = (kfoldacc/nfold)
 
-
-
-###########################################################  
+#full train accuracy
 totalACC = 0
-train = []
-count = 0
-for selectedIndex in ts_file:
-    train.append(ts_file[count])
-    count = count + 1
-
-# Train to find Best Threshold
-for everysample in train:
+for everysample in ts_file:
     sco.append(everysample[0])
-sco.sort() 
-
 maxACC = 0
 maxTHE = 0
-x= sco[0]
-while x<= sco[len(sco)-1]:
+x= min(sco)
+while x<= max(sco):
     thre= x
     TP=0.000001
     FP=0.000001
     TN=0.000001
     FN=0.000001
-    for everysample in train:
+    for everysample in ts_file:
         ss= everysample[0]
         clas= everysample[1]
         if ss> thre:
@@ -340,48 +222,34 @@ while x<= sco[len(sco)-1]:
         maxTHE = thre
     x= x+1
 
-
-#========== Load Test Data ====================
+#Load Test Data
 v1= open(filename1)
-samplelist= v1.readlines()
+samplelist= [n.strip('\n').split('\t') for n in v1.readlines()]
 v1.close()
 
-#========== Testing =======================
+#Testing
 boundMAX = 1000
 boundMIN = 0
 length = 400
 sco= []
 x= 0.0
-dipep_test= {}
-for x1 in sosco_key:
-    dipep_test[x1]= 0
-ts_scor_clas= []
+dipep_test= ini_dic(key_list=dipep)
 ts_file= []
-ts_pop= []
-
-
+#read samplelist
 for line in samplelist:
-    tmp = line.split('\t')
-    seq= tmp[0]
-    tmp = tmp[1].split('\n')
-    tmp = tmp[0]
-    clas = tmp[0:1]
-    for fea in dipep_test:
-        dipep_test[fea]= 0
+    seq = line[0]
+    clas = line[1]
     
+    dipep_test= ini_dic(key_list=dipep)
     for aa in range(0, len(seq)-(gap+1)):  
         tempaa= seq[aa]+seq[aa+(gap+1)]
-        dipep_test[tempaa]= int(dipep_test[tempaa])+1
+        dipep_test[tempaa] += 1
     gg=0.0
-    for x6 in sosco_key:
+    for x6 in dipep:
         gg+= float((scoring[x6])*dipep_test[x6])
         
-    ts_scor_clas.append(gg/(len(seq)-(gap+1))) 
-    ts_scor_clas.append(clas)
-    
-    ts_file.append(ts_scor_clas)
-    ts_scor_clas= [] 
-    
+    ts_file.append([gg/(len(seq)-(gap+1)),clas])
+#calculate full test accuracy
 totalACC = 0
 test = ts_file
 thre= maxTHE
@@ -406,7 +274,6 @@ for everysample in test:
         TN+= 1
         
 totalACC = (((TP+TN)/len(test))*100)
-MCC = ((TP*TN)-(FP*FN))/math.sqrt((TP+FP)*(TP+FN)*(TN+FP)*(TN+FN))
 
 print ("\n---------- Result ----------")
 print ("FullTrain_acc="+str(maxACC))
@@ -416,11 +283,3 @@ print ("Theshold="+str(thre))
 print ("Test_acc="+str(totalACC))
 print ("Sensitivity="+str(TP/(TP+FN)))
 print ("Specitivity="+str(TN/(TN+FP))+"\n")
-
-corr_pep = pearson_def(avg_aa_score,cur_aa_score)
-
-auc = ((bestfit) - (W2*(corr_pep)))/W1;
-
-f3.close()
-f2.close()
-f1.close()
