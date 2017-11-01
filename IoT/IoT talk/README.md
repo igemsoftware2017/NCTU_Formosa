@@ -3,10 +3,14 @@ IoT talk : sensor,device and model
 ### What is IoT talk system ?
 
 The IoT talk system is create by Jason Yi-Bing Lin[1].
-It is a useful IoT connection system that can easily been used.
+It is a useful IoT connection system that can used easily.
 Just by using the website GUI and some python code,
 we can built a system that contains sensing,visualization, prediction and spraying the water due to 
-prediction result.And the codes we used are shown above.
+prediction result.And the codes we used are shown above.<br />
+#### Note!!!
+##### The IoT talk system from Yi-Bing Lin's lab is not release yet. 
+##### So it doesn`t allow other peoples to use.
+##### To see our result , you can watch the video in our wiki [IoT demo](http://2017.igem.org/Team:NCTU_Formosa/Demonstrate)
 
 Sensor&spraying
 --------

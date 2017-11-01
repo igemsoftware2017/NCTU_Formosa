@@ -1,11 +1,11 @@
-Disease Predictin Model
+Disease Prediction Model
 ========
 
-This is a the CNN base model that can use for disease prediction
+This is the CNN based model that can be used for disease prediction
 
 How to use ?
 --------
-The following requirement are needed for using this model.
+The following requirements are needed for using this model.
 
 `python >= 3.6` with packages : `optparse`,`numpy`,`tensorflow`>=1.2,`tensorlayer`
 
@@ -20,7 +20,7 @@ Training model
 --------
 Run `CNN.py` to starting training
 
-You need to input the training file , testing file ,and savename to run the code
+You need to input the `training file` , `testing file` ,and `savename` to run the code
 
 Example :
 ```
@@ -40,4 +40,5 @@ they are some options to modify the network hyper parameters
 
 `-g [--graph]` using tensorboard or not
 
-After training , model output a `.npz` format file ,it can be easy analyze by `tl.files.load_npz` function
+After training , model output a `.npz` format file ,it can be analyzed easily 
+by the function of `tl.files.load_npz`.
