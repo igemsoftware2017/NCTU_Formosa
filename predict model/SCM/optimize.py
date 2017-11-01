@@ -1,4 +1,8 @@
-
+#################################################################
+#The sourse code is from :
+#http://iclab.life.nctu.edu.tw/iclab_webtools/SCMBYK/download.php
+#
+#################################################################
 import genetic
 import random
 import math
