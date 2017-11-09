@@ -76,7 +76,7 @@ def make_sc(scorecard):
     for line in f3.readlines():
         if count==3:
             tmpscore1 = line.split('[')
-            tmpscore2 = tmpscore1[1].strip(']'),split(',')
+            tmpscore2 = tmpscore1[1].strip(']').split(',')
             for tmpval in tmpscore2:
                 tmpscore.append(float(tmpval))
         count = count + 1
